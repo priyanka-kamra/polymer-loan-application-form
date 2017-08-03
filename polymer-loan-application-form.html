@@ -113,21 +113,6 @@
 
                 });
             }
-            _loanTypeSelected(e) {
-                var selectedItem = e.target.selectedItem;
-                if (selectedItem.innerText == 'Home Loan') {
-                    this.loanDetails.loanTypeId = '1';
-                }
-                else if (selectedItem.innerText == 'Personal Loan') {
-                    this.loanDetails.loanTypeId = '2';
-                }
-                else if (selectedItem.innerText == 'Car Loan') {
-                    this.loanDetails.loanTypeId = '3';
-                } else {
-                    this.loanDetails.loanTypeId = '4';
-                }
-            }
-
         }
 
         window.customElements.define(LoanApplicationForm.is, LoanApplicationForm);
