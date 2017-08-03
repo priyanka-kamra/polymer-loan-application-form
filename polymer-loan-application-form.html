@@ -1,0 +1,135 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-item/paper-textarea.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../neon-animation/web-animations.html">
+<!--
+`<Polymer loan application form>` is Description
+
+@element Name
+-->
+<dom-module id="loan-application-form">
+    <template>
+        <style>
+             :host {
+                display: block
+            }
+
+            .main-content {
+                margin: 0 auto;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                padding: 25px;
+                box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+                border-radius: 4px;
+            }
+
+            paper-button {
+                width: 20%;
+                height: 40px;
+                background-color: #ff6200;
+                color: #fff;
+            }
+
+            .display-left {
+                width: 47%;
+                float: left;
+            }
+
+            .display-right {
+                width: 47%;
+                float: right;
+            }
+
+            .display-clear {
+                clear: both;
+            }
+
+            #applyLoanBtn {
+                background-color: #ff6200;
+                border: none;
+                color: white;
+                padding: 10px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 4px;
+                margin: 10px auto;
+            }
+        </style>
+        <div class="main-content">
+            <paper-dropdown-menu class="display-left" label="Loan Type" name="loanTypeId">
+                <paper-listbox class="paper-listbox" slot="dropdown-content" on-iron-select="_loanTypeSelected">
+                    <paper-item class="paper-item" value="1">Home Loan</paper-item>
+                    <paper-item class="paper-item" value="2">Personal Loan</paper-item>
+                    <paper-item class="paper-item" value="3">Education Loan</paper-item>
+                    <paper-item class="paper-item" value="4">Car Loan</paper-item>
+                </paper-listbox>
+            </paper-dropdown-menu>
+            <paper-input name="loanAmount" class="display-right" label="Amount" required auto-validate allowed-pattern="[0-9]" id="loanAmount"
+                value="{{loanDetails.appliedLoanAmount::input}}" error-message="Loan amount can't be blank."></paper-input>
+            <div class="display-clear"></div>
+
+            <paper-input name="loanTenure" class="display-left" label="Tenure" required auto-validate allowed-pattern="[0-9]" id="loanTenure"
+                value="{{loanDetails.tenure::input}}" error-message="Tenure can't be blank.">
+                <div slot="suffix">months</div>
+            </paper-input>
+            <paper-input name="loanInterest" class="display-right" label="Interest Rate" required auto-validate id="loanInterest" value="{{loanDetails.firstName::input}}"
+                error-message="Please enter rate of interest.">
+                <div slot="suffix">%</div>
+            </paper-input>
+            <div class="display-clear"></div>
+            <paper-textarea name="remarks" label="Remarks" required auto-validate autocomplete="cc-name" id="remarks" value="{{loanDetails.remarks::input}}"
+                error-message="Remarks  can't be blank."> </paper-textarea>
+            <div class="display-clear"></div>
+            <paper-button raised on-click="_applyNewLoan" id="applyLoanBtn">Apply</paper-button>
+        </div>
+
+
+    </template>
+
+    <script>
+        class LoanApplicationForm extends Polymer.Element {
+
+            static get is() { return 'loan-application-form'; }
+
+            static get properties() {
+                return {
+
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function () {
+
+                });
+            }
+            _loanTypeSelected(e) {
+                var selectedItem = e.target.selectedItem;
+                if (selectedItem.innerText == 'Home Loan') {
+                    this.loanDetails.loanTypeId = '1';
+                }
+                else if (selectedItem.innerText == 'Personal Loan') {
+                    this.loanDetails.loanTypeId = '2';
+                }
+                else if (selectedItem.innerText == 'Car Loan') {
+                    this.loanDetails.loanTypeId = '3';
+                } else {
+                    this.loanDetails.loanTypeId = '4';
+                }
+            }
+
+        }
+
+        window.customElements.define(LoanApplicationForm.is, LoanApplicationForm);
+    </script>
+</dom-module>

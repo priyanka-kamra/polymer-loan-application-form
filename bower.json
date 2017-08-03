@@ -1,0 +1,30 @@
+{
+  "name": "loan-application-form",
+  "homepage": "https://github.com/priyanka-kamra/polymer-loan-application-form",
+  "description": "polymer loan application form",
+  "main": "https://github.com/priyanka-kamra/polymer-loan-application-form",
+  "keywords": [
+    "\"{{site.project_title}}\"",
+    "\"webcomponents\""
+  ],
+  "authors": [
+    "Priyanka"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.2",
+    "paper-input": "PolymerElements/paper-input#^2.0.1",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
+    "neon-animation": "PolymerElements/neon-animation#^2.0.1",
+    "web-animations-js": "^2.3.1"
+  }
+}
